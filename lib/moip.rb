@@ -1,10 +1,11 @@
+# encoding: utf-8
 require 'net/https'
 require 'uri'
 
 class Moip
   # include HTTParty
-  CONFIG = YAML.load_file(File.join(RAILS_ROOT, 'config', 'gateway.yml'))[RAILS_ENV]
-  STATUS = { 1 => "authorized", 2 => "started", 3 => "printed", 4 => "completed", 5 => "canceled", 6 => "analysing"}
+	CONFIG = YAML.load_file( Rails.root.join('config', 'moip.yml'))[Rails.env]
+	STATUS = {1=>"authorized", 2=>"started", 3=>"printed", 4=>"completed", 5=>"canceled", 6=>"analysing"}
 
   class << self
     def authorize(attributes = {})
